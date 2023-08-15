@@ -3,7 +3,7 @@ import cloudinary from './cloudinary'
 let cachedResults
 
 export default async function getResults() {
-  if (!cachedResults) {
+  // if (!cachedResults) {
     const fetchedResults = await cloudinary.v2.search
       .expression(`folder:${process.env.CLOUDINARY_FOLDER}/*`)
       .sort_by('public_id', 'desc')
@@ -11,7 +11,7 @@ export default async function getResults() {
       .execute()
 
     cachedResults = fetchedResults
-  }
+  // }
 
   return cachedResults
 }
